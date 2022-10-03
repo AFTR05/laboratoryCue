@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.reportViewController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="menuOptionMonitorReports" mnemonicParsing="false" onAction="#changeToMonitorView" text="Monitor" />
+        <Menu fx:id="menuOptionStudentReports" mnemonicParsing="false" onAction="#changeToStudentView" text="Student" />
+        <Menu fx:id="menuOptionObjectsReports" mnemonicParsing="false" onAction="#changeToObjectsView" text="Objects" />
+            <Menu fx:id="menuOptionLoanReports" mnemonicParsing="false" onAction="#changeToLoanView" text="Loan" />
+            <Menu fx:id="menuOptionReportsReports" mnemonicParsing="false" text="Reports" />
+      </menus>
+    </MenuBar>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="947.0">
+         <children>
+            <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="17.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/example/laboratorycue/image/cueLogo.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tableMonitorsReports" layoutX="302.0" layoutY="6.0" prefHeight="150.0" prefWidth="629.0">
+               <columns>
+                  <TableColumn fx:id="columnNameMonitorsReports" prefWidth="125.0" text="Name" />
+                  <TableColumn fx:id="columnCareerMonitorsReports" prefWidth="125.0" text="Career" />
+                  <TableColumn fx:id="columnDirectionMonitorsReports" prefWidth="125.0" text="Direction" />
+                  <TableColumn fx:id="columnIdMonitorsReports" prefWidth="125.0" text="Id" />
+                  <TableColumn fx:id="columnTypeMonitorsReports" prefWidth="130.0" text="Type" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tableStudentsReports" layoutX="302.0" layoutY="168.0" prefHeight="132.0" prefWidth="630.0">
+               <columns>
+                  <TableColumn fx:id="columnNameStudentsReports" prefWidth="125.0" text="Name" />
+                  <TableColumn fx:id="columnCareerStudentsReports" prefWidth="125.0" text="Career" />
+                  <TableColumn fx:id="columnDirectionStudentsReports" prefWidth="125.0" text="Direction" />
+                  <TableColumn fx:id="columnIdStudentsReports" prefWidth="125.0" text="Id" />
+                  <TableColumn fx:id="columnTypeStudentsReports" prefWidth="130.0" text="Type" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tableObjectsReports" layoutX="302.0" layoutY="314.0" prefHeight="130.0" prefWidth="630.0">
+               <columns>
+                  <TableColumn fx:id="columnNameObjectsReports" prefWidth="125.0" text="Name" />
+                  <TableColumn fx:id="columnCodeObjectsReports" prefWidth="125.0" text="Code" />
+                  <TableColumn fx:id="columnPriceObjectsReports" prefWidth="125.0" text="Price" />
+                  <TableColumn fx:id="columnAmountObjectsReports" prefWidth="125.0" text="Amount" />
+                  <TableColumn fx:id="columnTypeObjectsReports" prefWidth="130.0" text="Type" />
+               </columns>
+            </TableView>
+            <Separator layoutX="2.0" layoutY="65.0" prefHeight="2.0" prefWidth="142.0" />
+            <Separator layoutY="194.0" prefHeight="0.0" prefWidth="142.0" />
+            <Separator layoutX="150.0" layoutY="155.0" prefHeight="14.0" prefWidth="788.0" />
+            <Separator layoutX="150.0" layoutY="300.0" prefHeight="14.0" prefWidth="788.0" />
+            <Label layoutX="196.0" layoutY="72.0" text="Monitors" />
+            <Label layoutX="200.0" layoutY="225.0" text="Students" />
+            <Label layoutX="200.0" layoutY="370.0" text="Objects" />
+            <Label graphicTextGap="6.0" layoutX="19.0" layoutY="14.0" prefHeight="26.0" prefWidth="108.0" text="Reporting" textOverrun="CLIP">
+               <font>
+                  <Font name="Courier New" size="18.0" />
+               </font>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </Label>
+            <Label graphicTextGap="6.0" layoutX="19.0" layoutY="40.0" prefHeight="3.0" prefWidth="108.0" text="History" textOverrun="CLIP">
+               <font>
+                  <Font name="Courier New" size="18.0" />
+               </font>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </Label>
+            <Separator layoutX="141.0" layoutY="18.0" orientation="VERTICAL" prefHeight="432.0" prefWidth="0.0" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

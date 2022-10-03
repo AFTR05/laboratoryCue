@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="laboratoryCue">
+    <output-path>$PROJECT_DIR$/out/artifacts/laboratoryCue</output-path>
+    <root id="root">
+      <element id="archive" name="laboratoryCue.jar">
+        <element id="module-output" name="laboratoryCue" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.monitorViewController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="menuOptionMonitorMonitor" mnemonicParsing="false" text="Monitor" />
+        <Menu fx:id="menuOptionStudentMonitor" mnemonicParsing="false" onAction="#changeToStudentView" text="Student" />
+        <Menu fx:id="menuOptionObjectsMonitor" mnemonicParsing="false" onAction="#changeToObjectsView" text="Objects" />
+            <Menu fx:id="menuOptionLoanMonitor" mnemonicParsing="false" onAction="#changeToLoanView" text="Loan" />
+            <Menu fx:id="menuOptionReportsMonitor" mnemonicParsing="false" onAction="#changeToReportsView" text="Reports" />
+      </menus>
+    </MenuBar>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="948.0">
+         <children>
+            <TextField fx:id="txtNameMonitor" layoutX="14.0" layoutY="115.0" prefHeight="30.0" prefWidth="290.0" promptText="Name">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtCareerMonitor" layoutX="14.0" layoutY="160.0" prefHeight="30.0" prefWidth="290.0" promptText="Carrer">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtDirectionMonitor" layoutX="14.0" layoutY="210.0" prefHeight="30.0" prefWidth="290.0" promptText="Direction">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtIdMonitor" layoutX="14.0" layoutY="260.0" prefHeight="30.0" prefWidth="290.0" promptText="Id">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnCreateMonitor" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#createMonitor" prefHeight="20.0" prefWidth="70.0" text="Create" textFill="#2e2c2c" />
+            <ImageView fitHeight="100.0" fitWidth="340.0" layoutX="460.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/example/laboratorycue/image/logo@2x.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnCancelMonitor" layoutX="99.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelMonitor" prefHeight="20.0" prefWidth="70.0" text="Cancel" textFill="#2e2c2c" />
+            <TableView fx:id="tableMonitor" layoutX="360.0" layoutY="115.0" prefHeight="226.0" prefWidth="580.0">
+               <columns>
+                  <TableColumn fx:id="columnNameMonitor" prefWidth="115.0" text="Name" />
+                  <TableColumn fx:id="columnCareerMonitor" prefWidth="115.0" text="Career" />
+                  <TableColumn fx:id="columnDirectionMonitor" prefWidth="115.0" text="Direction" />
+                  <TableColumn fx:id="columnIdMonitor" minWidth="0.0" prefWidth="115.0" text="Id" />
+                  <TableColumn fx:id="columnTypeMonitor" prefWidth="122.4000244140625" text="Type" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnDeleteMonitor" layoutX="185.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteMonitor" prefHeight="20.0" prefWidth="70.0" text="Delete" textFill="#2e2c2c" />
+            <Separator layoutX="14.0" layoutY="350.0" prefHeight="2.0" prefWidth="292.0" />
+            <Separator layoutX="360.0" layoutY="350.0" prefHeight="0.0" prefWidth="581.0" />
+            <Separator layoutX="330.0" layoutY="115.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="5.0" />
+            <Separator layoutX="330.0" layoutY="1.0" orientation="VERTICAL" prefHeight="109.0" prefWidth="5.0" />
+            <ComboBox fx:id="cbTypeMonitor" layoutX="14.0" layoutY="308.0" onAction="#seleccionarTipoDocumentoAction" prefHeight="26.0" prefWidth="290.0" promptText="Type" />
+            <Label graphicTextGap="6.0" layoutX="14.0" layoutY="13.0" prefHeight="66.0" prefWidth="280.0" text="Monitor Register" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Courier New" size="26.0" />
+               </font>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>
