@@ -2,11 +2,28 @@ package com.example.laboratorycue.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class reportViewController {
+import java.io.IOException;
+
+public class ReportViewController {
+
+    @FXML
+    private Button btnMenuOptionLoanReport;
+
+    @FXML
+    private Button btnMenuOptionMonitorReport;
+
+    @FXML
+    private Button btnMenuOptionObjectsReport;
+
+    @FXML
+    private Button btnMenuOptionReportsReport;
+
+    @FXML
+    private Button btnMenuOptionStudentReport;
 
     @FXML
     private TableColumn<?, ?> columnAmountObjectsReports;
@@ -54,21 +71,6 @@ public class reportViewController {
     private TableColumn<?, ?> columnTypeStudentsReports;
 
     @FXML
-    private Menu menuOptionLoanReports;
-
-    @FXML
-    private Menu menuOptionMonitorReports;
-
-    @FXML
-    private Menu menuOptionObjectsReports;
-
-    @FXML
-    private Menu menuOptionReportsReports;
-
-    @FXML
-    private Menu menuOptionStudentReports;
-
-    @FXML
     private TableView<?> tableMonitorsReports;
 
     @FXML
@@ -77,24 +79,31 @@ public class reportViewController {
     @FXML
     private TableView<?> tableStudentsReports;
 
-    @FXML
-    void changeToLoanView(ActionEvent event) {
+    private ChangerScenesController changerScenesController=new ChangerScenesController();
 
+    @FXML
+    void changeToLoanView(ActionEvent event) throws IOException {
+        changerScenesController.changeToLoanView(event);
     }
 
     @FXML
-    void changeToMonitorView(ActionEvent event) {
-
+    void changeToMonitorView(ActionEvent event)throws IOException {
+        changerScenesController.changeToMonitorView(event);
     }
 
     @FXML
-    void changeToObjectsView(ActionEvent event) {
-
+    void changeToObjectsView(ActionEvent event)throws IOException {
+        changerScenesController.changeToObjectsView(event);
     }
 
     @FXML
-    void changeToStudentView(ActionEvent event) {
+    void changeToReportsView(ActionEvent event)throws IOException {
+        changerScenesController.changeToReportsView(event);
+    }
 
+    @FXML
+    void changeToStudentView(ActionEvent event)throws IOException {
+        changerScenesController.changeToStudentView(event);
     }
 
 }

@@ -3,11 +3,12 @@ package com.example.laboratorycue.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class loanViewController {
+import java.io.IOException;
+
+public class LoanViewController {
 
     @FXML
     private Button btnAddProduct;
@@ -40,19 +41,19 @@ public class loanViewController {
     private TableColumn<?, ?> columnTypeObjectsLoan;
 
     @FXML
-    private Menu menuOptionLoanLoan;
+    private Button menuOptionLoanLoan;
 
     @FXML
-    private Menu menuOptionMonitorLoan;
+    private Button menuOptionMonitorLoan;
 
     @FXML
-    private Menu menuOptionObjectsLoan;
+    private Button menuOptionObjectsLoan;
 
     @FXML
-    private Menu menuOptionReportsLoan;
+    private Button menuOptionReportsLoan;
 
     @FXML
-    private Menu menuOptionStudentLoan;
+    private Button menuOptionStudentLoan;
 
     @FXML
     private TableView<?> tableObjectsLoans;
@@ -62,24 +63,30 @@ public class loanViewController {
 
     }
 
+    private ChangerScenesController changerScenesController=new ChangerScenesController();
     @FXML
-    void changeToLoanView(ActionEvent event) {
-
+    void changeToLoanView(ActionEvent event) throws IOException {
+        changerScenesController.changeToLoanView(event);
     }
 
     @FXML
-    void changeToMonitorView(ActionEvent event) {
-
+    void changeToMonitorView(ActionEvent event) throws IOException{
+        changerScenesController.changeToMonitorView(event);
     }
 
     @FXML
-    void changeToObjectsView(ActionEvent event) {
-
+    void changeToObjectsView(ActionEvent event) throws IOException{
+        changerScenesController.changeToObjectsView(event);
     }
 
     @FXML
-    void changeToReportsView(ActionEvent event) {
+    void changeToReportsView(ActionEvent event) throws IOException{
+        changerScenesController.changeToReportsView(event);
+    }
 
+    @FXML
+    void changeToStudentView(ActionEvent event) throws IOException{
+        changerScenesController.changeToStudentView(event);
     }
 
     @FXML

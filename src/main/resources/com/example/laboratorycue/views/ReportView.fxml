@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -13,22 +16,49 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.reportViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportViewController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu fx:id="menuOptionMonitorReports" mnemonicParsing="false" onAction="#changeToMonitorView" text="Monitor" />
-        <Menu fx:id="menuOptionStudentReports" mnemonicParsing="false" onAction="#changeToStudentView" text="Student" />
-        <Menu fx:id="menuOptionObjectsReports" mnemonicParsing="false" onAction="#changeToObjectsView" text="Objects" />
-            <Menu fx:id="menuOptionLoanReports" mnemonicParsing="false" onAction="#changeToLoanView" text="Loan" />
-            <Menu fx:id="menuOptionReportsReports" mnemonicParsing="false" text="Reports" />
-      </menus>
-    </MenuBar>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionMonitorReport" cache="true" onAction="#changeToMonitorView" pickOnBounds="false" prefHeight="0.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="Monitor">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionStudentReport" mnemonicParsing="false" onAction="#changeToStudentView" style="-fx-background-color: transparent;" text="Student" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionObjectsReport" mnemonicParsing="false" onAction="#changeToObjectsView" style="-fx-background-color: transparent;" text="Object" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionLoanReport" mnemonicParsing="false" onAction="#changeToLoanView" style="-fx-background-color: transparent;" text="Loan" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionReportsReport" mnemonicParsing="false" onAction="#changeToReportsView" style="-fx-background-color: transparent;" text="Reports" />
+               </graphic>
+            </Menu>
+         </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </MenuBar>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="947.0">
          <children>
             <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="17.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../java/com/example/laboratorycue/image/cueLogo.png" />
+                  <Image url="@../../../../../java/com/example/laboratorycue/image/cueLogo.png" />
                </image>
             </ImageView>
             <TableView fx:id="tableMonitorsReports" layoutX="302.0" layoutY="6.0" prefHeight="150.0" prefWidth="629.0">
