@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 
 public class LoanViewController {
+    ModelFactoryController mfc= ModelFactoryController.getInstance();
 
     @FXML
     private Button btnAddProduct;

@@ -11,6 +11,11 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class StudentViewController {
+    ModelFactoryController mfc= ModelFactoryController.getInstance();
+
+
+    @FXML
+    private Button btnUpdateStudent;
 
     @FXML
     private Button btnCancelStudent;
@@ -52,7 +57,7 @@ public class StudentViewController {
     private TableColumn<?, ?> columnNameStudent;
 
     @FXML
-    private TableColumn<?, ?> columnTypeStudent;
+    private TableColumn<?, ?> columnAmountLoanStudent;
 
     @FXML
     private TableView<?> tableStudent;
@@ -99,6 +104,10 @@ public class StudentViewController {
     @FXML
     void changeToStudentView(ActionEvent event) throws IOException{
         changerScenesController.changeToStudentView(event);
+    }
+    @FXML
+    void updateStudent(ActionEvent event) {
+
     }
 
     @FXML

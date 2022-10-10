@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.LoanViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.LoanViewController">
   <children>
       <MenuBar>
          <menus>
@@ -59,7 +59,7 @@
          <children>
             <ImageView fitHeight="100.0" fitWidth="340.0" layoutX="460.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../java/com/example/laboratorycue/image/logo@2x.png" />
+                  <Image url="@../image/logo@2x.png" />
                </image>
             </ImageView>
             <TableView fx:id="tableObjectsLoans" layoutX="249.0" layoutY="126.0" prefHeight="240.0" prefWidth="684.0">

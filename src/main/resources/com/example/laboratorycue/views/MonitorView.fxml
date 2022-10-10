@@ -58,12 +58,7 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCareerMonitor" layoutX="14.0" layoutY="160.0" prefHeight="30.0" prefWidth="290.0" promptText="Carrer">
-               <font>
-                  <Font name="Courier New" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtDirectionMonitor" layoutX="14.0" layoutY="210.0" prefHeight="30.0" prefWidth="290.0" promptText="Direction">
+            <TextField fx:id="txtPhoneMonitor" layoutX="14.0" layoutY="210.0" prefHeight="30.0" prefWidth="290.0" promptText="Phone number">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
@@ -73,23 +68,23 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="btnCreateMonitor" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="70.0" text="Create" textFill="#2e2c2c" />
-            <Button fx:id="btnCancelMonitor" layoutX="99.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelMonitor" prefHeight="20.0" prefWidth="70.0" text="Cancel" textFill="#2e2c2c" />
+            <Button fx:id="btnCreateMonitor" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#createMonitor" prefHeight="20.0" prefWidth="70.0" text="Create" textFill="#2e2c2c" AnchorPane.rightAnchor="862.8000000000001" />
+            <Button fx:id="btnCancelMonitor" layoutX="251.0" layoutY="359.0" mnemonicParsing="false" onAction="#cancelMonitor" prefHeight="26.0" prefWidth="62.0" text="Cancel" textFill="#2e2c2c" />
             <TableView fx:id="tableMonitor" layoutX="360.0" layoutY="115.0" prefHeight="226.0" prefWidth="580.0">
                <columns>
                   <TableColumn fx:id="columnNameMonitor" prefWidth="115.0" text="Name" />
                   <TableColumn fx:id="columnCareerMonitor" prefWidth="115.0" text="Career" />
-                  <TableColumn fx:id="columnDirectionMonitor" prefWidth="115.0" text="Direction" />
+                  <TableColumn fx:id="columnPhoneNumberMonitor" prefWidth="115.0" text="Phone Number" />
                   <TableColumn fx:id="columnIdMonitor" minWidth="0.0" prefWidth="115.0" text="Id" />
-                  <TableColumn fx:id="columnTypeMonitor" prefWidth="122.4000244140625" text="Type" />
+                  <TableColumn fx:id="columnAmountLoanMonitor" prefWidth="122.4000244140625" text="Amount of loans" />
                </columns>
             </TableView>
-            <Button fx:id="btnDeleteMonitor" layoutX="185.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteMonitor" prefHeight="20.0" prefWidth="70.0" text="Delete" textFill="#2e2c2c" />
+            <Button fx:id="btnDeleteMonitor" layoutX="170.0" layoutY="359.0" mnemonicParsing="false" onAction="#deleteMonitor" prefHeight="26.0" prefWidth="62.0" text="Delete" textFill="#2e2c2c" />
             <Separator layoutX="14.0" layoutY="350.0" prefHeight="2.0" prefWidth="292.0" />
             <Separator layoutX="360.0" layoutY="350.0" prefHeight="0.0" prefWidth="581.0" />
             <Separator layoutX="330.0" layoutY="115.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="5.0" />
             <Separator layoutX="330.0" layoutY="1.0" orientation="VERTICAL" prefHeight="109.0" prefWidth="5.0" />
-            <ComboBox fx:id="cbTypeMonitor" layoutX="14.0" layoutY="308.0" onAction="#seleccionarTipoDocumentoAction" prefHeight="26.0" prefWidth="290.0" promptText="Type" />
+            <ComboBox fx:id="cbTypeMonitor" layoutX="14.0" layoutY="308.0" prefHeight="26.0" prefWidth="290.0" promptText="Type of document" />
             <Label graphicTextGap="6.0" layoutX="14.0" layoutY="13.0" prefHeight="66.0" prefWidth="280.0" text="Monitor Register" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Courier New" size="26.0" />
@@ -100,9 +95,11 @@
             </Label>
             <ImageView fx:id="imageCueMonitor" fitHeight="93.0" fitWidth="292.0" layoutX="506.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../java/com/example/laboratorycue/image/logo@2x.png" />
+                  <Image url="@../image/logo@2x.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnUpdateMonitor" layoutX="98.0" layoutY="360.0" mnemonicParsing="false" onAction="#updateMonitor" text="Update" />
+            <ComboBox fx:id="cbCareerMonitor" layoutX="15.0" layoutY="163.0" prefHeight="26.0" prefWidth="289.0" promptText="Career" />
          </children>
       </AnchorPane>
   </children>

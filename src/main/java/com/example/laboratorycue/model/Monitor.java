@@ -1,19 +1,15 @@
 package com.example.laboratorycue.model;
 
-public class Monitor extends Person{
-    private String career;
+public class Monitor extends Student {
+
     private int ageInCompany;
-
-    private int amountLoan;
-
     private double totalIncomeLoan;
 
-    public double getTotalIncomeLoan() {
-        return totalIncomeLoan;
-    }
-
-    public void setTotalIncomeLoan(double totalIncomeLoan) {
-        this.totalIncomeLoan = totalIncomeLoan;
+    public Monitor(String name, String code, String phoneNumber, String typeDocument, String career) {
+        super(name, code, phoneNumber, typeDocument, career);
+        setAmoutLoan(0);
+        this.ageInCompany = 0;
+        this.totalIncomeLoan = 0;
     }
 
     public int getAgeInCompany() {
@@ -24,26 +20,11 @@ public class Monitor extends Person{
         this.ageInCompany = ageInCompany;
     }
 
-    public int getAmountLoan() {
-        return amountLoan;
+    public double getTotalIncomeLoan() {
+        return totalIncomeLoan;
     }
 
-    public void setAmountLoan(int amountLoan) {
-        this.amountLoan = amountLoan;
-    }
-
-    public Monitor(String name, String career, int ageInCompany) {
-        setName(name);
-        this.career = career;
-        this.ageInCompany=ageInCompany;
-        this.amountLoan=0;
-    }
-
-    public String getCareer() {
-        return career;
-    }
-
-    public void setCareer(String career) {
-        this.career = career;
+    public void setTotalIncomeLoan(double totalIncomeLoan) {
+        this.totalIncomeLoan = totalIncomeLoan;
     }
 }

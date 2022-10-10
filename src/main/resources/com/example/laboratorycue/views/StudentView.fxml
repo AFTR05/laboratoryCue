@@ -15,6 +15,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -60,7 +61,7 @@
          <children>
             <ImageView fitHeight="100.0" fitWidth="340.0" layoutX="460.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../java/com/example/laboratorycue/image/logo@2x.png" />
+                  <Image url="@../image/logo@2x.png" />
                </image>
             </ImageView>
             <TextField fx:id="txtNameStudent" layoutX="14.0" layoutY="115.0" prefHeight="30.0" prefWidth="290.0" promptText="Name">
@@ -68,7 +69,7 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtDirectionStudent" layoutX="14.0" layoutY="210.0" prefHeight="30.0" prefWidth="290.0" promptText="Direction">
+            <TextField fx:id="txtDirectionStudent" layoutX="14.0" layoutY="210.0" prefHeight="30.0" prefWidth="290.0" promptText="Phone number">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
@@ -78,8 +79,6 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="btnCreateStudent" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#createStudent" prefHeight="20.0" prefWidth="70.0" text="Create" />
-            <Button fx:id="btnCancelStudent" layoutX="97.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelStudent" prefHeight="20.0" prefWidth="70.0" text="Cancel" />
             <TextField fx:id="txtIdStudent" layoutX="14.0" layoutY="260.0" prefHeight="30.0" prefWidth="290.0" promptText="Id">
                <font>
                   <Font name="Courier New" size="12.0" />
@@ -91,10 +90,9 @@
                   <TableColumn fx:id="columnCareerStudent" prefWidth="115.0" text="Career" />
                   <TableColumn fx:id="columnDirectionStudent" prefWidth="115.0" text="Direction" />
                   <TableColumn fx:id="columnIdStudent" prefWidth="115.0" text="Id" />
-                  <TableColumn fx:id="columnTypeStudent" prefWidth="115.0" text="Type" />
+                  <TableColumn fx:id="columnAmountLoanStudent" prefWidth="115.0" text="Type" />
                </columns>
             </TableView>
-            <Button fx:id="btnDeleteStudent" layoutX="180.0" layoutY="359.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="26.0" prefWidth="75.0" text="Delete" />
             <Separator layoutX="14.0" layoutY="350.0" prefWidth="292.0" />
             <Separator layoutX="330.0" layoutY="115.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="5.0" />
             <Separator layoutX="360.0" layoutY="350.0" prefHeight="0.0" prefWidth="581.0" />
@@ -108,6 +106,21 @@
                   <Blend mode="DARKEN" />
                </effect>
             </Label>
+            <HBox layoutY="350.0" prefHeight="30.0" prefWidth="330.0" spacing="12.0">
+               <children>
+                  <Button fx:id="btnCreateStudent" mnemonicParsing="false" onAction="#createStudent" prefHeight="20.0" prefWidth="70.0" text="Create" />
+                  <Button fx:id="btnUpdateStudent" mnemonicParsing="false" onAction="#updateStudent" prefHeight="26.0" prefWidth="61.0" text="Update">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnDeleteStudent" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="26.0" prefWidth="75.0" text="Delete" />
+                  <Button fx:id="btnCancelStudent" mnemonicParsing="false" onAction="#cancelStudent" prefHeight="20.0" prefWidth="70.0" text="Cancel" />
+               </children>
+               <padding>
+                  <Insets left="12.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
       </AnchorPane>
   </children>

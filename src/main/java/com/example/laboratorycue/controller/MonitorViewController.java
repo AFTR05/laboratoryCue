@@ -1,17 +1,71 @@
 package com.example.laboratorycue.controller;
 
+import com.example.laboratorycue.Application;
+import com.example.laboratorycue.model.Career;
+import com.example.laboratorycue.model.Monitor;
+import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.model.TypeDocument;
+import com.example.laboratorycue.service.impl.Laboratory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MonitorViewController {
+public class MonitorViewController implements Initializable {
+    private DeleterInputs deleterInputs=new DeleterInputs();
+    private ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
+    private ChangerScenesController changerScenesController=new ChangerScenesController();
+    ModelFactoryController mfc= ModelFactoryController.getInstance();
+    Monitor monitorSelected;
+    ObservableList monitorList=mfc.getLaboratory().getMonitorService().getObservablelistMonitor();
+    //Inicialize =observable list process,prepare CBs--------------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        mfc.getLaboratory().getMonitorService().generateProve();
+        columnNameMonitor.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnCareerMonitor.setCellValueFactory(new PropertyValueFactory<>("career"));
+        columnIdMonitor.setCellValueFactory(new PropertyValueFactory<>("code"));
+        columnPhoneNumberMonitor.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        columnAmountLoanMonitor.setCellValueFactory(new PropertyValueFactory<>("amountLoan"));
+//Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        tableMonitor.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            monitorSelected =newSelection;
+            showMonitorInformation(monitorSelected);
+        });
+// configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        comboBoxAdder.addComboBoxOptionsTypeDocument(cbTypeMonitor);
+        comboBoxAdder.addComboBoxOptionsCareer(cbCareerMonitor);
+        tableMonitor.setItems(monitorList);
+    }
+
+
+    private void showMonitorInformation(Monitor monitorSelected){
+        if(monitorSelected != null){
+            txtNameMonitor.setText(monitorSelected.getName());
+            cbTypeMonitor.setValue(monitorSelected.getTypeDocument());
+            cbCareerMonitor.setValue(monitorSelected.getCareer());
+            txtPhoneMonitor.setText(monitorSelected.getPhoneNumber());
+            txtIdMonitor.setText(monitorSelected.getCode());
+        }
+    }
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    @FXML
+    private Button btnUpdateMonitor;
 
     @FXML
     private Button btnCancelMonitor;
@@ -38,34 +92,34 @@ public class MonitorViewController {
     private Button btnMenuOptionStudentMonitor;
 
     @FXML
-    private ComboBox<?> cbTypeMonitor;
+    private ComboBox<String> cbTypeMonitor;
 
     @FXML
-    private TableColumn<?, ?> columnCareerMonitor;
+    private TableColumn<Monitor, String> columnCareerMonitor;
 
     @FXML
-    private TableColumn<?, ?> columnDirectionMonitor;
+    private TableColumn<Monitor, String> columnPhoneNumberMonitor;
 
     @FXML
-    private TableColumn<?, ?> columnIdMonitor;
+    private TableColumn<Monitor,String> columnIdMonitor;
 
     @FXML
-    private TableColumn<?, ?> columnNameMonitor;
+    private TableColumn<Monitor, String> columnNameMonitor;
 
     @FXML
-    private TableColumn<?, ?> columnTypeMonitor;
+    private TableColumn<Monitor, Integer> columnAmountLoanMonitor;
 
     @FXML
     private ImageView imageCueMonitor;
 
     @FXML
-    private TableView<?> tableMonitor;
+    private TableView<Monitor> tableMonitor;
 
     @FXML
-    private TextField txtCareerMonitor;
+    private ComboBox<String> cbCareerMonitor;
 
     @FXML
-    private TextField txtDirectionMonitor;
+    private TextField txtPhoneMonitor;
 
     @FXML
     private TextField txtIdMonitor;
@@ -74,10 +128,34 @@ public class MonitorViewController {
     private TextField txtNameMonitor;
 
     @FXML
-    void cancelMonitor(ActionEvent event) {
-
+    void createMonitor(ActionEvent event) {
+        mfc.createMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
+        tableMonitor.setItems(monitorList);
+        tableMonitor.refresh();
+        deleterInputs.deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
     }
-    private ChangerScenesController changerScenesController=new ChangerScenesController();
+
+    @FXML
+    void updateMonitor(ActionEvent event) {
+        mfc.updateMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
+        tableMonitor.setItems(monitorList);
+        tableMonitor.refresh();
+        deleterInputs.deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+    }
+
+    @FXML
+    void cancelMonitor(ActionEvent event) {
+        deleterInputs.deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+    }
+
+    @FXML
+    void deleteMonitor(ActionEvent event) {
+        mfc.deleteMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
+        tableMonitor.setItems(monitorList);
+        tableMonitor.refresh();
+        deleterInputs.deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+    }
+
     @FXML
     void changeToMonitorView(ActionEvent event) throws IOException {
         changerScenesController.changeToMonitorView(event);
@@ -104,14 +182,5 @@ public class MonitorViewController {
         changerScenesController.changeToStudentView(event);
     }
 
-    @FXML
-    void deleteMonitor(ActionEvent event) {
-
-    }
-
-    @FXML
-    void seleccionarTipoDocumentoAction(ActionEvent event) {
-
-    }
 
 }

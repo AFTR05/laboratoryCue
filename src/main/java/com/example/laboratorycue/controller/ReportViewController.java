@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 
 public class ReportViewController {
-
+    ModelFactoryController mfc= ModelFactoryController.getInstance();
     @FXML
     private Button btnMenuOptionLoanReport;
 
