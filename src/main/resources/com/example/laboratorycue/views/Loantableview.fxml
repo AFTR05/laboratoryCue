@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportLoanViewController">
+  <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionMonitorReport" cache="true" onAction="#changeToMonitorView" pickOnBounds="false" prefHeight="0.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="Monitor">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionStudentReport" mnemonicParsing="false" onAction="#changeToStudentView" style="-fx-background-color: transparent;" text="Student" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionObjectsReport" mnemonicParsing="false" onAction="#changeToObjectsView" style="-fx-background-color: transparent;" text="Object" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionLoanReport" mnemonicParsing="false" onAction="#changeToLoanView" style="-fx-background-color: transparent;" text="Loan" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="btnMenuOptionReportsReport" mnemonicParsing="false" onAction="#changeToReportsView" style="-fx-background-color: transparent;" text="Reports" />
+               </graphic>
+            </Menu>
+         </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </MenuBar>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="947.0">
+         <children>
+            <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="17.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/cueLogo.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tableLoanReports" layoutX="302.0" layoutY="62.0" prefHeight="295.0" prefWidth="630.0">
+               <columns>
+                  <TableColumn fx:id="columnCodeLoanReports" prefWidth="95.20001220703125" text="Code" />
+                  <TableColumn fx:id="columnBeginLoanReports" prefWidth="115.20001220703125" text="Begin Date" />
+                  <TableColumn fx:id="columnFinalLoanReports" prefWidth="108.79998779296875" text="Final Date" />
+                  <TableColumn fx:id="columnMonitorLoanReports" prefWidth="148.79998779296875" text="Monitor" />
+                  <TableColumn fx:id="columnStudentLoanReports" prefWidth="161.60003662109375" text="Student" />
+               </columns>
+            </TableView>
+            <Separator layoutX="2.0" layoutY="65.0" prefHeight="2.0" prefWidth="142.0" />
+            <Separator layoutY="194.0" prefHeight="0.0" prefWidth="142.0" />
+            <Label layoutX="200.0" layoutY="225.0" />
+            <Label graphicTextGap="6.0" layoutX="19.0" layoutY="14.0" prefHeight="26.0" prefWidth="108.0" text="Reporting" textOverrun="CLIP">
+               <font>
+                  <Font name="Courier New" size="18.0" />
+               </font>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </Label>
+            <Label graphicTextGap="6.0" layoutX="19.0" layoutY="40.0" prefHeight="3.0" prefWidth="108.0" text="History" textOverrun="CLIP">
+               <font>
+                  <Font name="Courier New" size="18.0" />
+               </font>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </Label>
+            <Separator layoutX="141.0" layoutY="18.0" orientation="VERTICAL" prefHeight="432.0" prefWidth="0.0" />
+            <Label layoutX="151.0" layoutY="136.0" prefHeight="48.0" prefWidth="150.0" text="Loan">
+               <font>
+                  <Font name="Courier New" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="155.0" layoutY="196.0" prefHeight="2.0" prefWidth="142.0" />
+            <Separator layoutX="147.0" layoutY="125.0" prefHeight="2.0" prefWidth="142.0" />
+            <Button fx:id="btnStudentObjectReportLoan" layoutX="165.0" layoutY="297.0" mnemonicParsing="false" onAction="#changeToStudentObjectReport" prefHeight="60.0" prefWidth="122.0" text="Student and Object" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>
