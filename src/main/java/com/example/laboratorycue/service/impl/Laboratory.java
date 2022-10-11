@@ -6,17 +6,17 @@ import com.example.laboratorycue.service.StudentService;
 import com.example.laboratorycue.service.ReportService;
 
 public class Laboratory {
-    private final LoanService loanService;
-    private final ObjectService objectService;
+    private final LoanServiceImpl loanService;
+    private final ObjectServiceImpl objectService;
     private final MonitorServiceImpl monitorService;
     private final StudentServiceImpl studentService;
-    private final ReportService reportService;
+    private final ReportServiceImpl reportService;
 
-    public LoanService getLoanService() {
+    public LoanServiceImpl getLoanService() {
         return loanService;
     }
 
-    public ObjectService getObjectService() {
+    public ObjectServiceImpl getObjectService() {
         return objectService;
     }
 
@@ -28,7 +28,7 @@ public class Laboratory {
         return studentService;
     }
 
-    public ReportService getReportService() {
+    public ReportServiceImpl getReportService() {
         return reportService;
     }
 

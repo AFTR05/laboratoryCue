@@ -27,18 +27,14 @@ public class MonitorViewController implements Initializable {
     private DeleterInputs deleterInputs=new DeleterInputs();
     private ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
     private ChangerScenesController changerScenesController=new ChangerScenesController();
+    private PreparatorTable preparatorTable=new PreparatorTable();
     ModelFactoryController mfc= ModelFactoryController.getInstance();
     Monitor monitorSelected;
     ObservableList monitorList=mfc.getLaboratory().getMonitorService().getObservablelistMonitor();
     //Inicialize =observable list process,prepare CBs--------------------------------------------------------------------------------------------------------------------------
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        mfc.getLaboratory().getMonitorService().generateProve();
-        columnNameMonitor.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnCareerMonitor.setCellValueFactory(new PropertyValueFactory<>("career"));
-        columnIdMonitor.setCellValueFactory(new PropertyValueFactory<>("code"));
-        columnPhoneNumberMonitor.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        columnAmountLoanMonitor.setCellValueFactory(new PropertyValueFactory<>("amountLoan"));
+        preparatorTable.prepareTableStudentMonitor(columnNameMonitor,columnCareerMonitor,columnIdMonitor,columnPhoneNumberMonitor,columnAmountLoanMonitor);
 //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableMonitor.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             monitorSelected =newSelection;

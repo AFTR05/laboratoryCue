@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class StudentServiceImpl implements StudentService {
-    public ObservableList<Student> observablelistStudent= FXCollections.observableArrayList();
+    private ObservableList<Student> observablelistStudent= FXCollections.observableArrayList();
 
     public ObservableList<Student> getObservablelistStudent() {
         return observablelistStudent;

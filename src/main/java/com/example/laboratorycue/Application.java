@@ -16,11 +16,13 @@ public class Application extends javafx.application.Application {
     }
     public void showPrincipalWindow(){
         try{
+            mfc.getLaboratory().getMonitorService().generateProve();
+            mfc.getLaboratory().getStudentService().generateProve();
+            mfc.getLaboratory().getObjectService().generateProve();
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("views/MonitorView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             primaryStage.setScene(scene);
             primaryStage.show();
-            System.out.println(Career.SE);
         }catch (IOException e){
             e.printStackTrace();
         }

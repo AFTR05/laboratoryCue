@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportViewController">
   <children>
       <MenuBar>
          <menus>
@@ -65,18 +65,18 @@
                <columns>
                   <TableColumn fx:id="columnNameMonitorsReports" prefWidth="125.0" text="Name" />
                   <TableColumn fx:id="columnCareerMonitorsReports" prefWidth="125.0" text="Career" />
-                  <TableColumn fx:id="columnDirectionMonitorsReports" prefWidth="125.0" text="Direction" />
+                  <TableColumn fx:id="columnPhoneNumberMonitorsReports" prefWidth="125.0" text="Phone Number" />
                   <TableColumn fx:id="columnIdMonitorsReports" prefWidth="125.0" text="Id" />
-                  <TableColumn fx:id="columnTypeMonitorsReports" prefWidth="130.0" text="Type" />
+                  <TableColumn fx:id="columnAmountLoanMonitorsReports" prefWidth="130.0" text="Amount of loans" />
                </columns>
             </TableView>
             <TableView fx:id="tableStudentsReports" layoutX="302.0" layoutY="168.0" prefHeight="132.0" prefWidth="630.0">
                <columns>
                   <TableColumn fx:id="columnNameStudentsReports" prefWidth="125.0" text="Name" />
                   <TableColumn fx:id="columnCareerStudentsReports" prefWidth="125.0" text="Career" />
-                  <TableColumn fx:id="columnDirectionStudentsReports" prefWidth="125.0" text="Direction" />
+                  <TableColumn fx:id="columnPhoneNumberStudentsReports" prefWidth="125.0" text="Phone Number" />
                   <TableColumn fx:id="columnIdStudentsReports" prefWidth="125.0" text="Id" />
-                  <TableColumn fx:id="columnTypeStudentsReports" prefWidth="130.0" text="Type" />
+                  <TableColumn fx:id="columnAmountLoanStudentsReports" prefWidth="130.0" text="Amount of loans" />
                </columns>
             </TableView>
             <TableView fx:id="tableObjectsReports" layoutX="302.0" layoutY="314.0" prefHeight="130.0" prefWidth="630.0">
@@ -84,8 +84,9 @@
                   <TableColumn fx:id="columnNameObjectsReports" prefWidth="125.0" text="Name" />
                   <TableColumn fx:id="columnCodeObjectsReports" prefWidth="125.0" text="Code" />
                   <TableColumn fx:id="columnPriceObjectsReports" prefWidth="125.0" text="Price" />
-                  <TableColumn fx:id="columnAmountObjectsReports" prefWidth="125.0" text="Amount" />
-                  <TableColumn fx:id="columnTypeObjectsReports" prefWidth="130.0" text="Type" />
+                  <TableColumn fx:id="columnStockObjectsReports" prefWidth="99.99993896484375" text="Stock" />
+                  <TableColumn fx:id="columnAmountLoanObjectsReports" prefWidth="92.0" text="AmountLoan" />
+                  <TableColumn fx:id="columnPositionObjectsReports" prefWidth="61.5999755859375" text="Position" />
                </columns>
             </TableView>
             <Separator layoutX="2.0" layoutY="65.0" prefHeight="2.0" prefWidth="142.0" />

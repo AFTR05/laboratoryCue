@@ -3,7 +3,20 @@ package com.example.laboratorycue.model;
 public class Object {
     private String name;
     private String code;
-    private Type type;
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    private String position;
     private int stock;
     private int amountLoan;
 
@@ -35,13 +48,7 @@ public class Object {
         this.price = price;
     }
 
-    public Type getType() {
-        return type;
-    }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
 
     public int getStock() {
         return stock;
@@ -67,10 +74,10 @@ public class Object {
         this.amountLoan = amountLoan;
     }
 
-    public Object(String name, String code, Type type, int stock, double price) {
+    public Object(String name, String code, String position, int stock, double price) {
         this.name = name;
         this.code = code;
-        this.type = type;
+        this.position = position;
         this.stock = stock;
         this.amountLoan = 0;
         this.price=price;

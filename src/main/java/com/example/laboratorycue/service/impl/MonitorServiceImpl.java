@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 public class MonitorServiceImpl implements StudentService {
     private ObservableList<Monitor> observablelistMonitor= FXCollections.observableArrayList();
+
     private SearcherObject searcherObject=new SearcherObject();
     public ObservableList<Monitor> getObservablelistMonitor() {
         return observablelistMonitor;
