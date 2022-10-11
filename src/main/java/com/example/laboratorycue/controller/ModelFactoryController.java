@@ -27,7 +27,7 @@ public class ModelFactoryController implements ModelFactoryService {
         return SingletonHolder.eINSTANCE;
     }
 
-
+//Monitor------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void createMonitor(String name, String code, String phoneNumber, String typeDocument, String career) {
         laboratory.getMonitorService().createStudentMonitor(name,code,phoneNumber,typeDocument,career);
@@ -39,5 +39,18 @@ public class ModelFactoryController implements ModelFactoryService {
     @Override
     public void deleteMonitor(String name, String code, String phoneNumber, String typeDocument, String career){
         laboratory.getMonitorService().deleteStudentMonitor(name, code, phoneNumber, typeDocument, career);
+    }
+//Student-------------------------------------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void createStudent(String name, String code, String phoneNumber, String typeDocument, String career){
+        laboratory.getStudentService().createStudentMonitor(name, code, phoneNumber, typeDocument, career);
+    }
+    @Override
+    public void updateStudent(String name, String code, String phoneNumber, String typeDocument, String career){
+        laboratory.getStudentService().updateStudentMonitor(name, code, phoneNumber, typeDocument, career);
+    }
+    @Override
+    public void deleteStudent(String name, String code, String phoneNumber, String typeDocument, String career){
+        laboratory.getStudentService().deleteStudentMonitor(name, code, phoneNumber, typeDocument, career);
     }
 }
