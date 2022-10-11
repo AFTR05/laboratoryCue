@@ -8,15 +8,16 @@ public class DeleterInputs {
         textField1.setText("");
         textField2.setText("");
         textField3.setText("");
-        comboBox1.setValue("");
-        comboBox2.setValue("");
+        comboBox1.setValue("Career");
+        comboBox2.setValue("Type");
     }
 
-    public void deleteInputObject(TextField textField1,TextField textField2,TextField textField3,TextField textField4,ComboBox comboBox1){
+    public void deleteInputObject(TextField textField1,TextField textField2,TextField textField3,TextField textField4,ComboBox comboBox1,ComboBox comboBox2){
         textField1.setText("");
         textField2.setText("");
         textField3.setText("");
         textField4.setText("");
-        comboBox1.setValue("");
+        comboBox1.setValue("Position");
+        comboBox2.setValue("Status");
     }
 }

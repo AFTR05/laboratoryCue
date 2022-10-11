@@ -1,21 +1,39 @@
 package com.example.laboratorycue.model;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Loan {
     private String BeginLoan;
-    private int daysLoan;
+    private String EndLoan;
     private String code;
     private Monitor monitor;
     private Student student;
     private DetalleObject[] detalleObjects;
     private double totalValue;
+    SimpleDateFormat dtf = new SimpleDateFormat("dd/MM/yyyy");
+    Calendar calendar = Calendar.getInstance();
+    Date dateObj = calendar.getTime();
 
-    public Loan(String beginLoan, int daysLoan, String code, Monitor monitor, Student student, DetalleObject[] detalleObjects) {
-        BeginLoan = beginLoan;
-        this.daysLoan = daysLoan;
+
+    public Loan(String endLoan, String code, Monitor monitor, Student student, DetalleObject[] detalleObjects, double totalValue) {
+        BeginLoan = dtf.format(dateObj);
+        EndLoan = endLoan;
         this.code = code;
         this.monitor = monitor;
         this.student = student;
         this.detalleObjects = detalleObjects;
+        this.totalValue = totalValue;
+    }
+
+    public String getEndLoan() {
+        return EndLoan;
+    }
+
+    public void setEndLoan(String endLoan) {
+        EndLoan = endLoan;
     }
 
     public String getBeginLoan() {
@@ -24,14 +42,6 @@ public class Loan {
 
     public void setBeginLoan(String beginLoan) {
         BeginLoan = beginLoan;
-    }
-
-    public int getDaysLoan() {
-        return daysLoan;
-    }
-
-    public void setDaysLoan(int daysLoan) {
-        this.daysLoan = daysLoan;
     }
 
     public String getCode() {

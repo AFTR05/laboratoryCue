@@ -22,9 +22,8 @@ public class MonitorServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean updateStudentMonitor(String name, String code, String phoneNumber, String typeDocument, String career){
-        Monitor monitor = null;
-        monitor = searcherObject.getMonitor(code,observablelistMonitor);
+    public boolean updateStudentMonitor(String name, String code, String phoneNumber, String typeDocument, String career,String oldCode){
+        Monitor monitor = searcherObject.getMonitor(oldCode,observablelistMonitor);
         if(monitor != null){
             monitor.setName(name);
             monitor.setCode(code);

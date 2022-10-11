@@ -29,7 +29,7 @@ public class ReportViewController implements Initializable {
         preparatorTable.prepareTableStudentMonitor(columnNameStudentsReports,columnCareerStudentsReports,columnIdStudentsReports,columnPhoneNumberStudentsReports,columnAmountLoanStudentsReports);
         tableStudentsReports.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
     //objects-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        preparatorTable.prepareTableObject(columnNameObjectsReports,columnCodeObjectsReports,columnPriceObjectsReports,columnStockObjectsReports,columnAmountLoanObjectsReports,columnPositionObjectsReports);
+        preparatorTable.prepareTableObject(columnNameObjectsReports,columnCodeObjectsReports,columnPriceObjectsReports,columnStockObjectsReports,columnAmountLoanObjectsReports,columnPositionObjectsReports,columnStatusObjectsReports);
         tableObjectsReports.setItems(mfc.getLaboratory().getObjectService().getObservablelistObject());
     }
 
@@ -47,6 +47,9 @@ public class ReportViewController implements Initializable {
 
     @FXML
     private Button btnMenuOptionStudentReport;
+
+    @FXML
+    private TableColumn<Object, String> columnStatusObjectsReports;
 
     @FXML
     private TableColumn<Monitor, Integer> columnAmountLoanMonitorsReports;
@@ -129,6 +132,12 @@ public class ReportViewController implements Initializable {
     @FXML
     void changeToStudentView(ActionEvent event)throws IOException {
         changerScenesController.changeToStudentView(event);
+    }
+
+
+    @FXML
+    void changeToLoanReport(ActionEvent event) throws IOException{
+        changerScenesController.changeToLoanReportView(event);
     }
 
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ReportViewController">
   <children>
       <MenuBar>
          <menus>
@@ -83,10 +83,11 @@
                <columns>
                   <TableColumn fx:id="columnNameObjectsReports" prefWidth="125.0" text="Name" />
                   <TableColumn fx:id="columnCodeObjectsReports" prefWidth="125.0" text="Code" />
-                  <TableColumn fx:id="columnPriceObjectsReports" prefWidth="125.0" text="Price" />
-                  <TableColumn fx:id="columnStockObjectsReports" prefWidth="99.99993896484375" text="Stock" />
-                  <TableColumn fx:id="columnAmountLoanObjectsReports" prefWidth="92.0" text="AmountLoan" />
-                  <TableColumn fx:id="columnPositionObjectsReports" prefWidth="61.5999755859375" text="Position" />
+                  <TableColumn fx:id="columnPriceObjectsReports" prefWidth="84.0" text="Price" />
+                  <TableColumn fx:id="columnStockObjectsReports" prefWidth="65.5999755859375" text="Stock" />
+                  <TableColumn fx:id="columnStatusObjectsReports" prefWidth="60.00006103515625" text="Status" />
+                  <TableColumn fx:id="columnAmountLoanObjectsReports" prefWidth="99.199951171875" text="AmountLoan" />
+                  <TableColumn fx:id="columnPositionObjectsReports" prefWidth="71.2000732421875" text="Position" />
                </columns>
             </TableView>
             <Separator layoutX="2.0" layoutY="65.0" prefHeight="2.0" prefWidth="142.0" />
@@ -113,6 +114,7 @@
                </effect>
             </Label>
             <Separator layoutX="141.0" layoutY="18.0" orientation="VERTICAL" prefHeight="432.0" prefWidth="0.0" />
+            <Button layoutX="31.0" layoutY="243.0" mnemonicParsing="false" onAction="#changeToLoanReport" prefHeight="40.0" prefWidth="81.0" text="Loan Report" />
          </children>
       </AnchorPane>
   </children>

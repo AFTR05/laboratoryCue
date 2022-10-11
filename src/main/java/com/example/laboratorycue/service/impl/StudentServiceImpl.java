@@ -23,9 +23,9 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public boolean updateStudentMonitor(String name, String code, String phoneNumber, String typeDocument, String career) {
+    public boolean updateStudentMonitor(String name, String code, String phoneNumber, String typeDocument, String career,String oldCode) {
         Student student=null;
-        student=searcherObject.getStudent(code,observablelistStudent);
+        student=searcherObject.getStudent(oldCode,observablelistStudent);
         if(student != null){
             student.setName(name);
             student.setCode(code);

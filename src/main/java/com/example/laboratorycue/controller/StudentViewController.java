@@ -104,7 +104,7 @@ public class StudentViewController implements Initializable {
 
     @FXML
     void updateStudent(ActionEvent event) {
-        mfc.updateStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
+        mfc.updateStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue(),studentSelected.getCode());
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
         tableStudent.refresh();
         deleterInputs.deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);

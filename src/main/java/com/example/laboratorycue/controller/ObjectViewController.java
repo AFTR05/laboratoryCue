@@ -26,7 +26,7 @@ public class ObjectViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        preparatorTable.prepareTableObject(columnNameObject,columnCodeObject,columnPriceObject,columnStockObject,columnAmountLoanObject,columnPositionObject);
+        preparatorTable.prepareTableObject(columnNameObject,columnCodeObject,columnPriceObject,columnStockObject,columnAmountLoanObject,columnPositionObject,columnStatusObject);
         //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableObject.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             objectSelected =newSelection;
@@ -34,11 +34,9 @@ public class ObjectViewController implements Initializable {
         });
 // configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         comboBoxAdder.addComboBoxOptionsPosition(cbPositionObject);
+        comboBoxAdder.addComboBoxOptionsStatus(cbStatusObject);
         tableObject.setItems(listObjects);
     }
-
-    @FXML
-    private Button btnBlockObject;
 
     @FXML
     private Button btnCreateObject;
@@ -66,6 +64,10 @@ public class ObjectViewController implements Initializable {
 
     @FXML
     private ComboBox<String> cbPositionObject;
+    @FXML
+    private ComboBox<String> cbStatusObject;
+    @FXML
+    private TableColumn<Object, String> columnStatusObject;
     @FXML
     private TableColumn<Object,Integer> columnAmountLoanObject;
 
@@ -99,11 +101,6 @@ public class ObjectViewController implements Initializable {
     @FXML
     private TextField txtStockObject;
 
-    @FXML
-    void blockObject(ActionEvent event) {
-
-    }
-
     private ChangerScenesController changerScenesController=new ChangerScenesController();
     @FXML
     void changeToLoanView(ActionEvent event) throws IOException {
@@ -132,27 +129,27 @@ public class ObjectViewController implements Initializable {
 
     @FXML
     void createObject(ActionEvent event) {
-        mfc.createObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        mfc.createObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
         tableObject.setItems(listObjects);
         tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
 
     }
 
     @FXML
     void deleteObject(ActionEvent event) {
-        mfc.deleteObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        mfc.deleteObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
         tableObject.setItems(listObjects);
         tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
     }
 
     @FXML
     void updateObject(ActionEvent event) {
-        mfc.updateObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        mfc.updateObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue(),objectSelected.getCode());
         tableObject.setItems(listObjects);
         tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
     }
 
 }

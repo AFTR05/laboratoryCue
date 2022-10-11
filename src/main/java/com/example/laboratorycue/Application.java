@@ -19,6 +19,7 @@ public class Application extends javafx.application.Application {
             mfc.getLaboratory().getMonitorService().generateProve();
             mfc.getLaboratory().getStudentService().generateProve();
             mfc.getLaboratory().getObjectService().generateProve();
+            mfc.getLaboratory().getLoanService().generateProve();
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("views/MonitorView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             primaryStage.setScene(scene);

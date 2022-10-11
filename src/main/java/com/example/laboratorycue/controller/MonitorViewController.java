@@ -39,7 +39,7 @@ public class MonitorViewController implements Initializable {
 //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableMonitor.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             monitorSelected =newSelection;
-            showInformationInputs.showMonitorInformation(monitorSelected,txtNameMonitor,cbCareerMonitor,cbTypeMonitor,txtIdMonitor,txtPhoneMonitor);
+            showInformationInputs.showMonitorInformation(monitorSelected,txtNameMonitor,cbTypeMonitor,cbCareerMonitor,txtPhoneMonitor,txtIdMonitor);
         });
 // configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         comboBoxAdder.addComboBoxOptionsTypeDocument(cbTypeMonitor);
@@ -121,7 +121,7 @@ public class MonitorViewController implements Initializable {
 
     @FXML
     void updateMonitor(ActionEvent event) {
-        mfc.updateMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
+        mfc.updateMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue(),monitorSelected.getCode());
         tableMonitor.setItems(monitorList);
         tableMonitor.refresh();
         deleterInputs.deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);

@@ -19,8 +19,7 @@ public class SearcherObject {
 
     public Monitor getMonitor(String code,ObservableList<Monitor> observableListMonitor){
         for (Monitor monitor : observableListMonitor) {
-            if(monitor.getCode().equals(code))
-            {
+            if(monitor.getCode().equals(code)){
                 return monitor;
             }
         }

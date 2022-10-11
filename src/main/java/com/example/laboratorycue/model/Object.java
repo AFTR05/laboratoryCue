@@ -12,15 +12,19 @@ public class Object {
         this.position = position;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     private String position;
     private int stock;
     private int amountLoan;
 
-    private boolean status;
+    private String status;
 
     private double price;
 
@@ -58,13 +62,6 @@ public class Object {
         this.stock = stock;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public int getAmountLoan() {
         return amountLoan;
@@ -74,13 +71,13 @@ public class Object {
         this.amountLoan = amountLoan;
     }
 
-    public Object(String name, String code, String position, int stock, double price) {
+    public Object(String name, String code, String position, int stock, double price,String status) {
         this.name = name;
         this.code = code;
         this.position = position;
         this.stock = stock;
         this.amountLoan = 0;
         this.price=price;
-        this.status=true;
+        this.status=status;
     }
 }

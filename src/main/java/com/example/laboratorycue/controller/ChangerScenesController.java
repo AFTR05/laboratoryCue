@@ -49,6 +49,14 @@ public class ChangerScenesController {
         stage.show();
     }
 
+    public void changeToLoanReportView(ActionEvent event) throws IOException{
+        root= FXMLLoader.load(Application.class.getResource("views/Loantableview.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void changeToStudentView(ActionEvent event) throws IOException{
         root= FXMLLoader.load(Application.class.getResource("views/StudentView.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();

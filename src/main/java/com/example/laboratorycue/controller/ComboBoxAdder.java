@@ -1,9 +1,6 @@
 package com.example.laboratorycue.controller;
 
-import com.example.laboratorycue.model.Career;
-import com.example.laboratorycue.model.Monitor;
-import com.example.laboratorycue.model.Position;
-import com.example.laboratorycue.model.TypeDocument;
+import com.example.laboratorycue.model.*;
 import javafx.scene.control.ComboBox;
 
 public class ComboBoxAdder {
@@ -16,5 +13,9 @@ public class ComboBoxAdder {
     }
     public void addComboBoxOptionsPosition(ComboBox comboBox){
         comboBox.getItems().addAll(Position.A1.getPosition(),Position.A2.getPosition(),Position.B1.getPosition(),Position.B2.getPosition(),Position.C1.getPosition(),Position.C2.getPosition());
+    }
+
+    public void addComboBoxOptionsStatus(ComboBox comboBox){
+        comboBox.getItems().addAll(Status.Active.getState(),Status.Block.getState());
     }
 }
