@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ObjectViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.ObjectViewController">
   <children>
       <MenuBar>
          <menus>
@@ -88,20 +88,11 @@
             <Separator layoutX="-5.0" layoutY="350.0" prefHeight="3.0" prefWidth="953.0" />
             <Button fx:id="btnCreateObject" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#createObject" prefHeight="20.0" prefWidth="70.0" text="Create" />
             <Separator layoutX="338.0" layoutY="114.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="5.0" />
-            <TableView fx:id="tableObject" layoutX="360.0" layoutY="115.0" prefHeight="226.0" prefWidth="569.0">
-               <columns>
-                  <TableColumn fx:id="columnNameObject" prefWidth="115.0" text="Name" />
-                  <TableColumn fx:id="columnStockObject" prefWidth="115.0" text="Stock" />
-                  <TableColumn fx:id="columnPriceObject" prefWidth="115.0" text="Price" />
-                  <TableColumn fx:id="columnCodeObject" prefWidth="115.0" text="Code" />
-                  <TableColumn fx:id="columnTypeObject" prefWidth="115.0" text="Type" />
-               </columns>
-            </TableView>
             <Button fx:id="btnBlockObject" layoutX="260.0" layoutY="360.0" mnemonicParsing="false" onAction="#blockObject" prefHeight="20.0" prefWidth="70.0" text="Block" />
             <Button fx:id="btnDeleteObject" layoutX="181.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteObject" prefHeight="20.0" prefWidth="70.0" text="Delete" />
             <Button fx:id="btnUpdateObject" layoutX="98.0" layoutY="360.0" mnemonicParsing="false" onAction="#updateObject" prefHeight="20.0" prefWidth="70.0" text="Update" />
             <Separator layoutX="341.0" orientation="VERTICAL" prefHeight="109.0" prefWidth="5.0" />
-            <ComboBox fx:id="cbTypeObject" layoutX="14.0" layoutY="308.0" onAction="#seleccionarTipodeObjetoAction" prefHeight="26.0" prefWidth="288.0" promptText="Type" />
+            <ComboBox fx:id="cbPositionObject" layoutX="14.0" layoutY="308.0" prefHeight="26.0" prefWidth="288.0" promptText="Position" />
             <Label graphicTextGap="6.0" layoutX="19.0" layoutY="21.0" prefHeight="66.0" prefWidth="280.0" text="Object Register" textOverrun="CLIP">
                <font>
                   <Font name="Courier New" size="26.0" />
@@ -110,6 +101,20 @@
                   <Blend mode="DARKEN" />
                </effect>
             </Label>
+            <VBox layoutX="351.0" layoutY="115.0" prefHeight="238.0" prefWidth="588.0">
+               <children>
+                  <TableView fx:id="tableObject" prefHeight="221.0" prefWidth="588.0">
+                     <columns>
+                        <TableColumn fx:id="columnNameObject" prefWidth="125.0" text="Name" />
+                        <TableColumn fx:id="columnCodeObject" prefWidth="100.80001831054688" text="Code" />
+                        <TableColumn fx:id="columnPriceObject" prefWidth="102.39996337890625" text="Price" />
+                        <TableColumn fx:id="columnStockObject" prefWidth="74.4000244140625" text="Stock" />
+                        <TableColumn fx:id="columnAmountLoanObject" minWidth="0.0" prefWidth="93.60009765625" text="AmountLoan" />
+                        <TableColumn fx:id="columnPositionObject" prefWidth="93.5999755859375" text="Position" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
   </children>

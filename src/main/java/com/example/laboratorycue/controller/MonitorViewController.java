@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MonitorViewController implements Initializable {
+    private ShowInformationInputs showInformationInputs=new ShowInformationInputs();
     private DeleterInputs deleterInputs=new DeleterInputs();
     private ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
     private ChangerScenesController changerScenesController=new ChangerScenesController();
@@ -38,26 +39,13 @@ public class MonitorViewController implements Initializable {
 //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableMonitor.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             monitorSelected =newSelection;
-            showMonitorInformation(monitorSelected);
+            showInformationInputs.showMonitorInformation(monitorSelected,txtNameMonitor,cbCareerMonitor,cbTypeMonitor,txtIdMonitor,txtPhoneMonitor);
         });
 // configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         comboBoxAdder.addComboBoxOptionsTypeDocument(cbTypeMonitor);
         comboBoxAdder.addComboBoxOptionsCareer(cbCareerMonitor);
         tableMonitor.setItems(monitorList);
     }
-
-
-    private void showMonitorInformation(Monitor monitorSelected){
-        if(monitorSelected != null){
-            txtNameMonitor.setText(monitorSelected.getName());
-            cbTypeMonitor.setValue(monitorSelected.getTypeDocument());
-            cbCareerMonitor.setValue(monitorSelected.getCareer());
-            txtPhoneMonitor.setText(monitorSelected.getPhoneNumber());
-            txtIdMonitor.setText(monitorSelected.getCode());
-        }
-    }
-
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
     @FXML

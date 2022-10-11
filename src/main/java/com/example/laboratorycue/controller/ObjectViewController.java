@@ -1,7 +1,10 @@
 package com.example.laboratorycue.controller;
 
+import com.example.laboratorycue.model.Object;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -9,9 +12,31 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ObjectViewController {
+public class ObjectViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
+    DeleterInputs deleterInputs=new DeleterInputs();
+    ShowInformationInputs showInformationInputs=new ShowInformationInputs();
+    ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
+    Object objectSelected;
+    PreparatorTable preparatorTable=new PreparatorTable();
+    ObservableList listObjects=mfc.getLaboratory().getObjectService().getObservablelistObject();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        preparatorTable.prepareTableObject(columnNameObject,columnCodeObject,columnPriceObject,columnStockObject,columnAmountLoanObject,columnPositionObject);
+        //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        tableObject.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            objectSelected =newSelection;
+            showInformationInputs.showObjectInformation(objectSelected,txtNameObject,txtStockObject,txtPriceObject,txtCodeObject,cbPositionObject);
+        });
+// configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        comboBoxAdder.addComboBoxOptionsPosition(cbPositionObject);
+        tableObject.setItems(listObjects);
+    }
+
     @FXML
     private Button btnBlockObject;
 
@@ -40,25 +65,27 @@ public class ObjectViewController {
     private Button btnUpdateObject;
 
     @FXML
-    private ComboBox<?> cbTypeObject;
+    private ComboBox<String> cbPositionObject;
+    @FXML
+    private TableColumn<Object,Integer> columnAmountLoanObject;
 
     @FXML
-    private TableColumn<?, ?> columnCodeObject;
+    private TableColumn<Object,String> columnCodeObject;
 
     @FXML
-    private TableColumn<?, ?> columnNameObject;
+    private TableColumn<Object,String> columnNameObject;
 
     @FXML
-    private TableColumn<?, ?> columnPriceObject;
+    private TableColumn<Object,String> columnPositionObject;
 
     @FXML
-    private TableColumn<?, ?> columnStockObject;
+    private TableColumn<Object,Double> columnPriceObject;
 
     @FXML
-    private TableColumn<?, ?> columnTypeObject;
+    private TableColumn<Object,Integer> columnStockObject;
 
     @FXML
-    private TableView<?> tableObject;
+    private TableView<Object> tableObject;
 
     @FXML
     private TextField txtCodeObject;
@@ -105,22 +132,27 @@ public class ObjectViewController {
 
     @FXML
     void createObject(ActionEvent event) {
+        mfc.createObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        tableObject.setItems(listObjects);
+        tableObject.refresh();
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
 
     }
 
     @FXML
     void deleteObject(ActionEvent event) {
-
-    }
-
-    @FXML
-    void seleccionarTipodeObjetoAction(ActionEvent event) {
-
+        mfc.deleteObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        tableObject.setItems(listObjects);
+        tableObject.refresh();
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
     }
 
     @FXML
     void updateObject(ActionEvent event) {
-
+        mfc.updateObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue());
+        tableObject.setItems(listObjects);
+        tableObject.refresh();
+        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject);
     }
 
 }

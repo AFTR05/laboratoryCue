@@ -16,4 +16,8 @@ public interface ModelFactoryService {
     void deleteMonitor(String name, String code, String phoneNumber, String typeDocument, String career);
 
     void deleteStudent(String name, String code, String phoneNumber, String typeDocument, String career);
+
+    void createObject(String name, String code, String price, String stock, String position);
+    void updateObject(String name, String code, String price, String stock, String position);
+    void deleteObject(String name, String code, String price, String stock, String position);
 }

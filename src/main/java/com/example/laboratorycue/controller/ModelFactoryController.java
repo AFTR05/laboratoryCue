@@ -53,4 +53,20 @@ public class ModelFactoryController implements ModelFactoryService {
     public void deleteStudent(String name, String code, String phoneNumber, String typeDocument, String career){
         laboratory.getStudentService().deleteStudentMonitor(name, code, phoneNumber, typeDocument, career);
     }
+//Object------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    @Override
+    public void createObject(String name, String code, String price, String stock, String position) {
+        laboratory.getObjectService().createObject(name,code,Double.parseDouble(price),Integer.parseInt(stock),position);
+    }
+
+    @Override
+    public void updateObject(String name, String code, String price, String stock, String position) {
+        laboratory.getObjectService().updateObject(name,code,Double.parseDouble(price),Integer.parseInt(stock),position);
+    }
+
+    @Override
+    public void deleteObject(String name, String code, String price, String stock, String position) {
+        laboratory.getObjectService().deleteObject(name,code,Double.parseDouble(price),Integer.parseInt(stock),position);
+    }
 }

@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class StudentViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
+    ShowInformationInputs showInformationInputs=new ShowInformationInputs();
     Student studentSelected;
     private ChangerScenesController changerScenesController=new ChangerScenesController();
     private PreparatorTable preparatorTable=new PreparatorTable();
@@ -29,21 +30,11 @@ public class StudentViewController implements Initializable {
         //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableStudent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             studentSelected =newSelection;
-            showMonitorInformation(studentSelected);
+            showInformationInputs.showStudentInformation(studentSelected,txtNameStudent,cbCareerStudent,cbTypeStudent,txtPhoneNumberStudent,txtIdStudent);
         });
         comboBoxAdder.addComboBoxOptionsCareer(cbCareerStudent);
         comboBoxAdder.addComboBoxOptionsTypeDocument(cbTypeStudent);
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
-    }
-
-    private void showMonitorInformation(Student studentSelected){
-        if(studentSelected != null){
-            txtNameStudent.setText(studentSelected.getName());
-            cbTypeStudent.setValue(studentSelected.getTypeDocument());
-            cbCareerStudent.setValue(studentSelected.getCareer());
-            txtPhoneNumberStudent.setText(studentSelected.getPhoneNumber());
-            txtIdStudent.setText(studentSelected.getCode());
-        }
     }
 
     @FXML

@@ -30,7 +30,7 @@ public class ReportViewController implements Initializable {
         tableStudentsReports.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
     //objects-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         preparatorTable.prepareTableObject(columnNameObjectsReports,columnCodeObjectsReports,columnPriceObjectsReports,columnStockObjectsReports,columnAmountLoanObjectsReports,columnPositionObjectsReports);
-        tableObjectsReports.setItems(mfc.getLaboratory().getObjectService().getObservablelistStudent());
+        tableObjectsReports.setItems(mfc.getLaboratory().getObjectService().getObservablelistObject());
     }
 
     @FXML
