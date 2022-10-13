@@ -89,6 +89,8 @@ public class LoanViewController implements Initializable {
     @FXML
     void addProduct(ActionEvent event) throws IOException {
         changerScenesController.changeToModalObject(event);
+        tableObjectsLoans.setItems(mfc.getObjectObservableList());
+        tableObjectsLoans.refresh();
     }
 
     private ChangerScenesController changerScenesController=new ChangerScenesController();
@@ -119,15 +121,10 @@ public class LoanViewController implements Initializable {
 
     @FXML
     void confirmLoan(ActionEvent event) {
-        if (mfc.getLaboratory().getValidator().validateLoan(mfc.getMonitorLoanSelected(),mfc.getStudentLoanSelected(),mfc.getObjectObservableList(),String.valueOf(dateEndPicker.getValue()))){
+        if (mfc.getLaboratory().getValidator().validateLoan(mfc.getMonitorLoanSelected(),mfc.getStudentLoanSelected(),mfc.getObjectObservableList(),String.valueOf(dateEndPicker.getValue()))&& (mfc.getLaboratory().getValidator().validateLoanDate(String.valueOf(dateEndPicker.getValue())))){
             mfc.createLoan(String.valueOf(dateEndPicker.getValue()));
-        }else {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Lack of information, some selections are missing");
-            alert.showAndWait();
         }
+
     }
 
 

@@ -46,7 +46,7 @@ public class SearcherObject {
 
     public DetalleObject getObjectObject(Object obj, ObservableList<DetalleObject> observableListObject){
         for (DetalleObject detalleObject : observableListObject) {
-            if(detalleObject.getObject().equals(obj))
+            if(detalleObject.getObject().getCode().equals(obj.getCode()))
             {
                 return detalleObject;
             }

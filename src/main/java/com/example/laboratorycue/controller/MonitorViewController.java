@@ -100,25 +100,21 @@ public class MonitorViewController implements Initializable {
     void createMonitor(ActionEvent event) {
         if (mfc.getLaboratory().getValidator().validateMonitorStudent(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue())){
             mfc.createMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
-        }else {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Lack of information, some selections are missing");
-            alert.showAndWait();
+            tableMonitor.setItems(monitorList);
+            tableMonitor.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
         }
 
-        tableMonitor.setItems(monitorList);
-        tableMonitor.refresh();
-        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
     }
 
     @FXML
     void updateMonitor(ActionEvent event) {
-        mfc.updateMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue(),monitorSelected.getCode());
-        tableMonitor.setItems(monitorList);
-        tableMonitor.refresh();
-        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+        if (mfc.getLaboratory().getValidator().validateMonitorSelected(monitorSelected)){
+            mfc.updateMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue(),monitorSelected.getCode());
+            tableMonitor.setItems(monitorList);
+            tableMonitor.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+        }
     }
 
     @FXML
@@ -128,10 +124,12 @@ public class MonitorViewController implements Initializable {
 
     @FXML
     void deleteMonitor(ActionEvent event) {
+        if (mfc.getLaboratory().getValidator().validateMonitorSelected(monitorSelected)){
         mfc.deleteMonitor(txtNameMonitor.getText(),txtIdMonitor.getText(),txtPhoneMonitor.getText(),cbTypeMonitor.getValue(),cbCareerMonitor.getValue());
         tableMonitor.setItems(monitorList);
         tableMonitor.refresh();
         mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameMonitor,txtIdMonitor,txtPhoneMonitor,cbCareerMonitor,cbTypeMonitor);
+        }
     }
 
     @FXML

@@ -95,34 +95,32 @@ public class StudentViewController implements Initializable {
 
     @FXML
     void updateStudent(ActionEvent event) {
-        mfc.updateStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue(),studentSelected.getCode());
-        tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
-        tableStudent.refresh();
-        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        if (mfc.getLaboratory().getValidator().validateStudentSelected(studentSelected)){
+            mfc.updateStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue(),studentSelected.getCode());
+            tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
+            tableStudent.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        }
     }
 
     @FXML
     void createStudent(ActionEvent event) {
         if (mfc.getLaboratory().getValidator().validateMonitorStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue())){
             mfc.createStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
-        }else {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Some information is missing");
-            alert.showAndWait();
-        }
-        tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
-        tableStudent.refresh();
-        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+            tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
+            tableStudent.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);}
     }
 
     @FXML
     void deleteStudent(ActionEvent event) {
-        mfc.deleteStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
-        tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
-        tableStudent.refresh();
-        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        if (mfc.getLaboratory().getValidator().validateStudentSelected(studentSelected)){
+            mfc.deleteStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
+            tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
+            tableStudent.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        }
+
     }
     @FXML
     void changeToLoanView(ActionEvent event) throws IOException {

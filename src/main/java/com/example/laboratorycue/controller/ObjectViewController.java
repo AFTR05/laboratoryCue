@@ -126,27 +126,34 @@ public class ObjectViewController implements Initializable {
 
     @FXML
     void createObject(ActionEvent event) {
-        mfc.createObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
-        tableObject.setItems(listObjects);
-        tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+        if (mfc.getLaboratory().getValidator().validateNullObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue())&&mfc.getLaboratory().getValidator().validateObjectPriceSelect(txtPriceObject.getText(),txtStockObject.getText())){
+            mfc.createObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
+            tableObject.setItems(listObjects);
+            tableObject.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+        }
 
     }
 
     @FXML
     void deleteObject(ActionEvent event) {
-        mfc.deleteObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
-        tableObject.setItems(listObjects);
-        tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+        if (mfc.getLaboratory().getValidator().validateObjectSelect(objectSelected) && mfc.getLaboratory().getValidator().validateObjectPriceSelect(txtPriceObject.getText(),txtStockObject.getText())){
+            mfc.deleteObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue());
+            tableObject.setItems(listObjects);
+            tableObject.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+
+        }
     }
 
     @FXML
     void updateObject(ActionEvent event) {
-        mfc.updateObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue(),objectSelected.getCode());
-        tableObject.setItems(listObjects);
-        tableObject.refresh();
-        deleterInputs.deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+        if (mfc.getLaboratory().getValidator().validateObjectSelect(objectSelected) && mfc.getLaboratory().getValidator().validateObjectPriceSelect(txtPriceObject.getText(),txtStockObject.getText())){
+            mfc.updateObject(txtNameObject.getText(),txtCodeObject.getText(),txtPriceObject.getText(),txtStockObject.getText(),cbPositionObject.getValue(),cbStatusObject.getValue(),objectSelected.getCode());
+            tableObject.setItems(listObjects);
+            tableObject.refresh();
+            mfc.getLaboratory().getDeleterInputs().deleteInputObject(txtNameObject,txtCodeObject,txtPriceObject,txtStockObject,cbPositionObject,cbStatusObject);
+        }
     }
 
 }
