@@ -1,15 +1,11 @@
 package com.example.laboratorycue.controller;
 
-import com.example.laboratorycue.model.Monitor;
 import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.utilities.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,23 +13,18 @@ import java.util.ResourceBundle;
 
 public class StudentViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
-    ShowInformationInputs showInformationInputs=new ShowInformationInputs();
     Student studentSelected;
-    private ChangerScenesController changerScenesController=new ChangerScenesController();
-    private PreparatorTable preparatorTable=new PreparatorTable();
-    private DeleterInputs deleterInputs=new DeleterInputs();
-    private ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        preparatorTable.prepareTableStudentMonitor(columnNameStudent,columnCareerStudent,columnIdStudent,columnPhoneNumberStudent,columnAmountLoanStudent);
+        mfc.getLaboratory().getPreparatorTable().prepareTableStudentMonitor(columnNameStudent,columnCareerStudent,columnIdStudent,columnPhoneNumberStudent,columnAmountLoanStudent);
         //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableStudent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             studentSelected =newSelection;
-            showInformationInputs.showStudentInformation(studentSelected,txtNameStudent,cbCareerStudent,cbTypeStudent,txtPhoneNumberStudent,txtIdStudent);
+            mfc.getLaboratory().getShowInformationInputs().showStudentInformation(studentSelected,txtNameStudent,cbCareerStudent,cbTypeStudent,txtPhoneNumberStudent,txtIdStudent);
         });
-        comboBoxAdder.addComboBoxOptionsCareer(cbCareerStudent);
-        comboBoxAdder.addComboBoxOptionsTypeDocument(cbTypeStudent);
+        mfc.getLaboratory().getComboBoxAdder().addComboBoxOptionsCareer(cbCareerStudent);
+        mfc.getLaboratory().getComboBoxAdder().addComboBoxOptionsTypeDocument(cbTypeStudent);
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
     }
 
@@ -99,7 +90,7 @@ public class StudentViewController implements Initializable {
 
     @FXML
     void cancelStudent(ActionEvent event) {
-        deleterInputs.deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
     }
 
     @FXML
@@ -107,15 +98,23 @@ public class StudentViewController implements Initializable {
         mfc.updateStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue(),studentSelected.getCode());
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
         tableStudent.refresh();
-        deleterInputs.deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
     }
 
     @FXML
     void createStudent(ActionEvent event) {
-        mfc.createStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
+        if (mfc.getLaboratory().getValidator().validateMonitorStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue())){
+            mfc.createStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
+        }else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Some information is missing");
+            alert.showAndWait();
+        }
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
         tableStudent.refresh();
-        deleterInputs.deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
     }
 
     @FXML
@@ -123,31 +122,31 @@ public class StudentViewController implements Initializable {
         mfc.deleteStudent(txtNameStudent.getText(),txtIdStudent.getText(),txtPhoneNumberStudent.getText(),cbTypeStudent.getValue(),cbCareerStudent.getValue());
         tableStudent.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
         tableStudent.refresh();
-        deleterInputs.deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
+        mfc.getLaboratory().getDeleterInputs().deleteInputStudent(txtNameStudent,txtPhoneNumberStudent,txtIdStudent,cbCareerStudent,cbTypeStudent);
     }
     @FXML
     void changeToLoanView(ActionEvent event) throws IOException {
-        changerScenesController.changeToLoanView(event);
+        mfc.getLaboratory().getChangerScenes().changeToLoanView(event);
     }
 
     @FXML
     void changeToMonitorView(ActionEvent event) throws IOException{
-        changerScenesController.changeToMonitorView(event);
+        mfc.getLaboratory().getChangerScenes().changeToMonitorView(event);
     }
 
     @FXML
     void changeToObjectsView(ActionEvent event) throws IOException{
-        changerScenesController.changeToObjectsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToObjectsView(event);
     }
 
     @FXML
     void changeToReportsView(ActionEvent event) throws IOException{
-        changerScenesController.changeToReportsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToReportsView(event);
     }
 
     @FXML
     void changeToStudentView(ActionEvent event) throws IOException{
-        changerScenesController.changeToStudentView(event);
+        mfc.getLaboratory().getChangerScenes().changeToStudentView(event);
     }
 
 

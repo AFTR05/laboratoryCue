@@ -1,4 +1,4 @@
-package com.example.laboratorycue.controller;
+package com.example.laboratorycue.utilities;
 
 import com.example.laboratorycue.model.*;
 import javafx.scene.control.ComboBox;

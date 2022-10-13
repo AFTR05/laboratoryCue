@@ -1,6 +1,7 @@
 package com.example.laboratorycue.controller;
 
 import com.example.laboratorycue.model.Object;
+import com.example.laboratorycue.utilities.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,24 +18,20 @@ import java.util.ResourceBundle;
 
 public class ObjectViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
-    DeleterInputs deleterInputs=new DeleterInputs();
-    ShowInformationInputs showInformationInputs=new ShowInformationInputs();
-    ComboBoxAdder comboBoxAdder=new ComboBoxAdder();
     Object objectSelected;
-    PreparatorTable preparatorTable=new PreparatorTable();
     ObservableList listObjects=mfc.getLaboratory().getObjectService().getObservablelistObject();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        preparatorTable.prepareTableObject(columnNameObject,columnCodeObject,columnPriceObject,columnStockObject,columnAmountLoanObject,columnPositionObject,columnStatusObject);
+        mfc.getLaboratory().getPreparatorTable().prepareTableObject(columnNameObject,columnCodeObject,columnPriceObject,columnStockObject,columnAmountLoanObject,columnPositionObject,columnStatusObject);
         //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         tableObject.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             objectSelected =newSelection;
             showInformationInputs.showObjectInformation(objectSelected,txtNameObject,txtStockObject,txtPriceObject,txtCodeObject,cbPositionObject);
         });
 // configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        comboBoxAdder.addComboBoxOptionsPosition(cbPositionObject);
-        comboBoxAdder.addComboBoxOptionsStatus(cbStatusObject);
+        mfc.getLaboratory().getComboBoxAdder().addComboBoxOptionsPosition(cbPositionObject);
+        mfc.getLaboratory().getComboBoxAdder().addComboBoxOptionsStatus(cbStatusObject);
         tableObject.setItems(listObjects);
     }
 

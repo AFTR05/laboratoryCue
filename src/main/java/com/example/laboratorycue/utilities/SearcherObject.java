@@ -1,9 +1,7 @@
-package com.example.laboratorycue.controller;
+package com.example.laboratorycue.utilities;
 
-import com.example.laboratorycue.model.Loan;
-import com.example.laboratorycue.model.Monitor;
+import com.example.laboratorycue.model.*;
 import com.example.laboratorycue.model.Object;
-import com.example.laboratorycue.model.Student;
 import javafx.collections.ObservableList;
 
 public class SearcherObject {
@@ -31,6 +29,26 @@ public class SearcherObject {
             if(object.getCode().equals(code))
             {
                 return object;
+            }
+        }
+        return null;
+    }
+
+    public Object getObjectStatus(String status, ObservableList<Object> observableListObject){
+        for (Object object : observableListObject) {
+            if(object.getStatus().equals(Status.Block))
+            {
+                return object;
+            }
+        }
+        return null;
+    }
+
+    public DetalleObject getObjectObject(Object obj, ObservableList<DetalleObject> observableListObject){
+        for (DetalleObject detalleObject : observableListObject) {
+            if(detalleObject.getObject().equals(obj))
+            {
+                return detalleObject;
             }
         }
         return null;

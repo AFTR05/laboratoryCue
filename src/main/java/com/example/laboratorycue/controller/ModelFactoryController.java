@@ -1,11 +1,43 @@
 package com.example.laboratorycue.controller;
 
+import com.example.laboratorycue.model.DetalleObject;
+import com.example.laboratorycue.model.Monitor;
+import com.example.laboratorycue.model.Student;
 import com.example.laboratorycue.service.ModelFactoryService;
 import com.example.laboratorycue.service.impl.Laboratory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ModelFactoryController implements ModelFactoryService {
 
     private Laboratory laboratory;
+    private Monitor monitorLoanSelected;
+    private Student studentLoanSelected;
+    private ObservableList<DetalleObject> objectObservableList= FXCollections.observableArrayList();
+
+    public Monitor getMonitorLoanSelected() {
+        return monitorLoanSelected;
+    }
+
+    public void setMonitorLoanSelected(Monitor monitorLoanSelected) {
+        this.monitorLoanSelected = monitorLoanSelected;
+    }
+
+    public Student getStudentLoanSelected() {
+        return studentLoanSelected;
+    }
+
+    public void setStudentLoanSelected(Student studentLoanSelected) {
+        this.studentLoanSelected = studentLoanSelected;
+    }
+
+    public ObservableList<DetalleObject> getObjectObservableList() {
+        return objectObservableList;
+    }
+
+    public void setObjectObservableList(ObservableList<DetalleObject> objectObservableList) {
+        this.objectObservableList = objectObservableList;
+    }
 
     public Laboratory getLaboratory() {
         return laboratory;
@@ -74,5 +106,16 @@ public class ModelFactoryController implements ModelFactoryService {
         {
             laboratory.getObjectService().deleteObject(name, code, Double.parseDouble(price), Integer.parseInt(stock), position,status);
         }
+
+        @Override
+        public void createLoan(String endDate){
+            laboratory.getLoanService().createLoan(monitorLoanSelected,studentLoanSelected,objectObservableList,endDate);
+            monitorLoanSelected=null;
+            studentLoanSelected=null;
+            objectObservableList.clear();
+        }
+
+
+
 
 }

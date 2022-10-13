@@ -1,6 +1,7 @@
-package com.example.laboratorycue.controller;
+package com.example.laboratorycue.utilities;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class DeleterInputs {
@@ -19,5 +20,9 @@ public class DeleterInputs {
         textField4.setText("");
         comboBox1.setValue("Position");
         comboBox2.setValue("Status");
+    }
+
+    public void deleteInputLoan(DatePicker datePicker){
+        datePicker.setValue(null);
     }
 }

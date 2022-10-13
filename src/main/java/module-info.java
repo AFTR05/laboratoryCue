@@ -17,4 +17,10 @@ module com.example.laboratorycue {
     opens com.example.laboratorycue.controller to javafx.fxml;
     exports com.example.laboratorycue.model;
     opens com.example.laboratorycue.model to javafx.base;
+    exports com.example.laboratorycue.utilities;
+    opens com.example.laboratorycue.utilities to javafx.fxml;
+    exports com.example.laboratorycue.service;
+    opens com.example.laboratorycue.service.impl to javafx.fxml;
+    opens com.example.laboratorycue.views to javafx.fxml;
+
 }

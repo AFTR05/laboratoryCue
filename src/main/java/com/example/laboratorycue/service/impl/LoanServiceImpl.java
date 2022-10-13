@@ -1,30 +1,34 @@
 package com.example.laboratorycue.service.impl;
 
 import com.example.laboratorycue.controller.ModelFactoryController;
-import com.example.laboratorycue.controller.SearcherObject;
 import com.example.laboratorycue.model.DetalleObject;
+import com.example.laboratorycue.model.Monitor;
+import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.utilities.SearcherObject;
 import com.example.laboratorycue.model.Loan;
 import com.example.laboratorycue.service.LoanService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 public class LoanServiceImpl implements LoanService {
     private ObservableList<Loan> observablelistLoan= FXCollections.observableArrayList();
-
     private static ModelFactoryController mfc=ModelFactoryController.getInstance();
-    SearcherObject searcherObject=new SearcherObject();
     //MM/dd/yyyy
+    private int contador=0;
+
+
+
 
     @Override
-    public void generateProve() {
-        observablelistLoan.add(new Loan("11/11/2022","123",null,null,null,0));
+    public void createLoan(Monitor monitorSelected, Student studentSelected, ObservableList<DetalleObject> listDetalleObjects, String endDate){
+        observablelistLoan.add(new Loan(endDate,String.valueOf(contador+1),monitorSelected,studentSelected,listDetalleObjects));
+        contador++;
+        studentSelected.setAmountLoan(studentSelected.getAmoutLoan()+1);
+        monitorSelected.setAmoutLoan(monitorSelected.getAmountLoan()+1);
+        for (int x=0;x<listDetalleObjects.size();x++){
+            listDetalleObjects.get(x).getObject().setStock(listDetalleObjects.get(x).getObject().getStock()-listDetalleObjects.get(x).getUnids());
+        }
     }
-
     public ObservableList<Loan> getObservablelistLoan() {
         return observablelistLoan;
     }

@@ -1,8 +1,8 @@
 package com.example.laboratorycue.controller;
 
 import com.example.laboratorycue.model.Loan;
-import com.example.laboratorycue.model.Monitor;
-import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.utilities.ChangerScenesController;
+import com.example.laboratorycue.utilities.PreparatorTable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,14 +15,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ReportLoanViewController implements Initializable {
-    ChangerScenesController changerScenesController=new ChangerScenesController();
     ModelFactoryController mfc= ModelFactoryController.getInstance();
-    private PreparatorTable preparatorTable=new PreparatorTable();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //loan------------------------------------------------------------------------------------------------------------------------------------------------------------
-        preparatorTable.prepareTableLoan(columnCodeLoanReports,columnBeginLoanReports,columnFinalLoanReports,columnMonitorLoanReports,columnStudentLoanReports);
+        mfc.getLaboratory().getPreparatorTable().prepareTableLoan(columnCodeLoanReports,columnBeginLoanReports,columnFinalLoanReports,columnMonitorLoanReports,columnStudentLoanReports);
         tableLoanReports.setItems((mfc.getLaboratory().getLoanService().getObservablelistLoan()));
     }
 
@@ -64,32 +62,32 @@ public class ReportLoanViewController implements Initializable {
 
     @FXML
     void changeToStudentObjectReport(ActionEvent event) throws IOException{
-        changerScenesController.changeToReportsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToReportsView(event);
     }
 
     @FXML
     void changeToLoanView(ActionEvent event) throws IOException {
-        changerScenesController.changeToLoanView(event);
+        mfc.getLaboratory().getChangerScenes().changeToLoanView(event);
     }
 
     @FXML
     void changeToMonitorView(ActionEvent event)throws IOException {
-        changerScenesController.changeToMonitorView(event);
+        mfc.getLaboratory().getChangerScenes().changeToMonitorView(event);
     }
 
     @FXML
     void changeToObjectsView(ActionEvent event)throws IOException {
-        changerScenesController.changeToObjectsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToObjectsView(event);
     }
 
     @FXML
     void changeToReportsView(ActionEvent event)throws IOException {
-        changerScenesController.changeToReportsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToReportsView(event);
     }
 
     @FXML
     void changeToStudentView(ActionEvent event)throws IOException {
-        changerScenesController.changeToStudentView(event);
+        mfc.getLaboratory().getChangerScenes().changeToStudentView(event);
     }
 
 }

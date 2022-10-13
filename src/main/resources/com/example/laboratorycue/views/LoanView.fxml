@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.LoanViewController">
+<VBox prefHeight="479.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorycue.controller.LoanViewController">
   <children>
       <MenuBar>
          <menus>
@@ -65,10 +65,10 @@
             <TableView fx:id="tableObjectsLoans" layoutX="249.0" layoutY="126.0" prefHeight="240.0" prefWidth="684.0">
                <columns>
                   <TableColumn fx:id="columnNameObjectsLoan" prefWidth="135.0" text="Name" />
-                  <TableColumn fx:id="columnCodeObjectsLoan" prefWidth="135.0" text="Code" />
-                  <TableColumn fx:id="columnPriceObjectsLoan" prefWidth="135.0" text="Price" />
-                  <TableColumn fx:id="columnTypeObjectsLoan" prefWidth="135.0" text="Type" />
-                  <TableColumn fx:id="columnAmountObjectsLoan" prefWidth="135.0" text="Amount" />
+                  <TableColumn fx:id="columnCodeObjectsLoan" prefWidth="127.199951171875" text="Code" />
+                  <TableColumn fx:id="columnPriceObjectsLoan" prefWidth="137.60003662109375" text="Price" />
+                  <TableColumn fx:id="columnPositionObjectsLoan" prefWidth="148.79998779296875" text="Position" />
+                  <TableColumn fx:id="columnUnidsObjectsLoan" prefWidth="133.5999755859375" text="Unids" />
                </columns>
             </TableView>
             <Separator layoutX="230.0" layoutY="8.0" orientation="VERTICAL" prefHeight="110.0" prefWidth="5.0" />
@@ -86,11 +86,9 @@
             <VBox alignment="CENTER" layoutX="-3.0" layoutY="117.0" prefHeight="261.0" prefWidth="233.0" spacing="15.0">
                <children>
                   <Button fx:id="btnSelectStudent" mnemonicParsing="false" onAction="#selectStudent" prefHeight="26.0" prefWidth="100.0" text="Select Student" />
-                  <Button fx:id="btnDeleteProduct" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="100.0" text="Delete product" />
                   <Button fx:id="btnSelectMonitor" mnemonicParsing="false" onAction="#selectMonitor" prefHeight="26.0" prefWidth="100.0" text="Select Monitor" />
-                  <Button fx:id="btnConfirmLoan" mnemonicParsing="false" onAction="#confirmLoan" text="Confirm Loan" />
                   <Button fx:id="btnAddProduct" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="100.0" text="Add product" />
-                  <DatePicker promptText="Select the end date">
+                  <DatePicker fx:id="dateEndPicker" prefHeight="26.0" prefWidth="146.0" promptText="Select the end date">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -98,6 +96,7 @@
                         <Insets />
                      </VBox.margin>
                   </DatePicker>
+                  <Button fx:id="btnConfirmLoan" mnemonicParsing="false" onAction="#confirmLoan" prefHeight="26.0" prefWidth="99.0" text="Confirm Loan" />
                </children>
             </VBox>
          </children>

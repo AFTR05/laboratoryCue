@@ -1,15 +1,42 @@
 package com.example.laboratorycue.controller;
 
+import com.example.laboratorycue.Application;
+import com.example.laboratorycue.model.DetalleObject;
+import com.example.laboratorycue.model.Monitor;
+import com.example.laboratorycue.model.Object;
+import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.utilities.ChangerScenesController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoanViewController {
+public class LoanViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
+    DetalleObject detalleObjectSelected;
+    private ObservableList<DetalleObject> listLoanObject= FXCollections.observableArrayList();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mfc.getLaboratory().getPreparatorTable().prepareTableDetalleObject(columnNameObjectsLoan,columnCodeObjectsLoan,columnPriceObjectsLoan,columnPositionObjectsLoan,columnUnidsObjectsLoan);
+        //Selection------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        tableObjectsLoans.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            detalleObjectSelected =newSelection;
+        });
+// configure comboBox and ObservableList-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        tableObjectsLoans.setItems(mfc.getObjectObservableList());
+    }
 
     @FXML
     private Button btnAddProduct;
@@ -18,28 +45,28 @@ public class LoanViewController {
     private Button btnConfirmLoan;
 
     @FXML
-    private Button btnDeleteProduct;
-
-    @FXML
     private Button btnSelectMonitor;
 
     @FXML
     private Button btnSelectStudent;
 
     @FXML
-    private TableColumn<?, ?> columnAmountObjectsLoan;
+    private TableColumn<DetalleObject, Integer> columnUnidsObjectsLoan;
 
     @FXML
-    private TableColumn<?, ?> columnCodeObjectsLoan;
+    private TableColumn<DetalleObject, String> columnCodeObjectsLoan;
 
     @FXML
-    private TableColumn<?, ?> columnNameObjectsLoan;
+    private TableColumn<DetalleObject, String> columnNameObjectsLoan;
 
     @FXML
-    private TableColumn<?, ?> columnPriceObjectsLoan;
+    private TableColumn<DetalleObject, Double> columnPriceObjectsLoan;
 
     @FXML
-    private TableColumn<?, ?> columnTypeObjectsLoan;
+    private TableColumn<DetalleObject, String> columnPositionObjectsLoan;
+
+    @FXML
+    private DatePicker dateEndPicker;
 
     @FXML
     private Button menuOptionLoanLoan;
@@ -57,11 +84,11 @@ public class LoanViewController {
     private Button menuOptionStudentLoan;
 
     @FXML
-    private TableView<?> tableObjectsLoans;
+    private TableView<DetalleObject> tableObjectsLoans;
 
     @FXML
-    void addProduct(ActionEvent event) {
-
+    void addProduct(ActionEvent event) throws IOException {
+        changerScenesController.changeToModalObject(event);
     }
 
     private ChangerScenesController changerScenesController=new ChangerScenesController();
@@ -92,22 +119,26 @@ public class LoanViewController {
 
     @FXML
     void confirmLoan(ActionEvent event) {
+        if (mfc.getLaboratory().getValidator().validateLoan(mfc.getMonitorLoanSelected(),mfc.getStudentLoanSelected(),mfc.getObjectObservableList(),String.valueOf(dateEndPicker.getValue()))){
+            mfc.createLoan(String.valueOf(dateEndPicker.getValue()));
+        }else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Lack of information, some selections are missing");
+            alert.showAndWait();
+        }
+    }
 
+
+    @FXML
+    void selectMonitor(ActionEvent event) throws IOException{
+        changerScenesController.changeToModalMonitor(event);
     }
 
     @FXML
-    void deleteProduct(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selectMonitor(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selectStudent(ActionEvent event) {
-
+    void selectStudent(ActionEvent event) throws IOException {
+        changerScenesController.changeToModalStudent(event);
     }
 
 }

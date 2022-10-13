@@ -1,6 +1,6 @@
 package com.example.laboratorycue.service.impl;
 
-import com.example.laboratorycue.controller.SearcherObject;
+import com.example.laboratorycue.utilities.SearcherObject;
 import com.example.laboratorycue.model.Career;
 import com.example.laboratorycue.model.Monitor;
 import com.example.laboratorycue.model.TypeDocument;

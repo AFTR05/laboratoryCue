@@ -1,8 +1,7 @@
 package com.example.laboratorycue.service;
 
-import com.example.laboratorycue.model.Career;
-import com.example.laboratorycue.model.Monitor;
-import com.example.laboratorycue.model.TypeDocument;
+import com.example.laboratorycue.model.*;
+import javafx.collections.ObservableList;
 
 public interface ModelFactoryService {
     void createMonitor(String name, String code, String phoneNumber, String typeDocument, String career);
@@ -20,4 +19,7 @@ public interface ModelFactoryService {
     void createObject(String name, String code, String price, String stock, String position,String status);
     void updateObject(String name, String code, String price, String stock, String position,String status,String oldCode);
     void deleteObject(String name, String code, String price, String stock, String position,String status);
+
+    void createLoan(String endDate);
+
 }

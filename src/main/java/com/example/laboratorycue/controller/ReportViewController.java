@@ -3,13 +3,14 @@ package com.example.laboratorycue.controller;
 import com.example.laboratorycue.model.Monitor;
 import com.example.laboratorycue.model.Object;
 import com.example.laboratorycue.model.Student;
+import com.example.laboratorycue.utilities.ChangerScenesController;
+import com.example.laboratorycue.utilities.PreparatorTable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,8 +18,6 @@ import java.util.ResourceBundle;
 
 public class ReportViewController implements Initializable {
     ModelFactoryController mfc= ModelFactoryController.getInstance();
-    private ChangerScenesController changerScenesController=new ChangerScenesController();
-    private PreparatorTable preparatorTable=new PreparatorTable();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,7 +28,7 @@ public class ReportViewController implements Initializable {
         preparatorTable.prepareTableStudentMonitor(columnNameStudentsReports,columnCareerStudentsReports,columnIdStudentsReports,columnPhoneNumberStudentsReports,columnAmountLoanStudentsReports);
         tableStudentsReports.setItems(mfc.getLaboratory().getStudentService().getObservablelistStudent());
     //objects-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        preparatorTable.prepareTableObject(columnNameObjectsReports,columnCodeObjectsReports,columnPriceObjectsReports,columnStockObjectsReports,columnAmountLoanObjectsReports,columnPositionObjectsReports,columnStatusObjectsReports);
+        mfc.getLaboratory().getPreparatorTable().prepareTableObject(columnNameObjectsReports,columnCodeObjectsReports,columnPriceObjectsReports,columnStockObjectsReports,columnAmountLoanObjectsReports,columnPositionObjectsReports,columnStatusObjectsReports);
         tableObjectsReports.setItems(mfc.getLaboratory().getObjectService().getObservablelistObject());
     }
 
@@ -111,33 +110,33 @@ public class ReportViewController implements Initializable {
 
     @FXML
     void changeToLoanView(ActionEvent event) throws IOException {
-        changerScenesController.changeToLoanView(event);
+        mfc.getLaboratory().getChangerScenes().changeToLoanView(event);
     }
 
     @FXML
     void changeToMonitorView(ActionEvent event)throws IOException {
-        changerScenesController.changeToMonitorView(event);
+        mfc.getLaboratory().getChangerScenes().changeToMonitorView(event);
     }
 
     @FXML
     void changeToObjectsView(ActionEvent event)throws IOException {
-        changerScenesController.changeToObjectsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToObjectsView(event);
     }
 
     @FXML
     void changeToReportsView(ActionEvent event)throws IOException {
-        changerScenesController.changeToReportsView(event);
+        mfc.getLaboratory().getChangerScenes().changeToReportsView(event);
     }
 
     @FXML
     void changeToStudentView(ActionEvent event)throws IOException {
-        changerScenesController.changeToStudentView(event);
+        mfc.getLaboratory().getChangerScenes().changeToStudentView(event);
     }
 
 
     @FXML
     void changeToLoanReport(ActionEvent event) throws IOException{
-        changerScenesController.changeToLoanReportView(event);
+        mfc.getLaboratory().getChangerScenes().changeToLoanReportView(event);
     }
 
 }
